@@ -5,16 +5,16 @@ Automatically generate multiple entry html files in one project. An enhancement 
 ### Install
 
 ```
-npm install @qintx/multi-page-webpack-plugin
+npm install @qintx/multi-page-webpack-plugin --save-dev
 // or
-yarn add @qintx/multi-page-webpack-plugin
+yarn add @qintx/multi-page-webpack-plugin --dev
 ```
 
 ### Usage
 
 ```
 // webpack.conf.js
-const MultiPageWebpackPlugin = require('multi-page-webpack-plugin')
+const MultiPageWebpackPlugin = require('@qintx/multi-page-webpack-plugin')
 
 {
     // ...
