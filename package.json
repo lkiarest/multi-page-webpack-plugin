@@ -9,6 +9,13 @@
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.7"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lkiarest/multi-page-webpack-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/lkiarest/multi-page-webpack-plugin/issues"
+  },
   "keywords": [
     "webpack",
     "plugin",
