@@ -2,6 +2,14 @@
 
 Automatically generate multiple entry html files in one project. An enhancement to WebpackHtmlPlugin.
 
+### Install
+
+```
+npm install @qintx/multi-page-webpack-plugin
+// or
+yarn add @qintx/multi-page-webpack-plugin
+```
+
 ### Usage
 
 ```
