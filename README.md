@@ -43,3 +43,32 @@ const MultiPageWebpackPlugin = require('multi-page-webpack-plugin')
 | minify | false | minify the output file or not |
 | commonChunks | [] | other common chunks like 'common', 'vendor' |
 | debug | false | print debug infomation or not |
+
+
+### Important
+
+The webpack-dev-server cli will modify webpack config before the process of webpack. So we should use API mode of webpack-dev-server, below is an example:
+
+```
+// @file devServer.js
+// -- run command 'node devServer.js'
+
+const Webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+
+require('./webpack.dev.conf').then(webpackConfig => {
+    const compiler = Webpack(webpackConfig);
+    const devServerOptions = Object.assign({}, webpackConfig.devServer, {
+      stats: {
+        colors: true
+      }
+    });
+
+    const server = new WebpackDevServer(compiler, devServerOptions);
+
+    server.listen(8080, '0.0.0.0', () => {
+      console.log('Starting server on http://localhost:8080');
+    });
+});
+
+```
