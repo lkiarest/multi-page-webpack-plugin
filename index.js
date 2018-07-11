@@ -1,6 +1,7 @@
 const path = require('path')
 const glob = require('glob')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const addDevServerEntrypoints = require('./addDevServerEntrypoints')
 
 const defaultOpts = {
     pageDir: 'src/pages', // page foler dir
@@ -9,7 +10,8 @@ const defaultOpts = {
     output: '[entryName]/index.html', // or another name like [entryName].html
     minify: false,
     commonChunks: [], // common chunks besides each entry module
-    debug: false
+    debug: false,
+    hot: false
 }
 
 function MultiPageWebpackPlugin(options) {
@@ -111,6 +113,10 @@ MultiPageWebpackPlugin.prototype.apply = function(compiler) {
         }
 
         compiler.options.entry = entry
+
+        if (this.options.hot) {
+            addDevServerEntrypoints(compiler.options)
+        }
 
         this.debug('------------ prepared entries --------------')
         this.debug(entry)

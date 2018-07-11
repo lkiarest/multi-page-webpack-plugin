@@ -5,16 +5,16 @@ Automatically generate multiple entry html files in one project. An enhancement 
 ### Install
 
 ```
-npm install @qintx/multi-page-webpack-plugin --save-dev
+npm install @qintx/multi-page-webpack-plugin
 // or
-yarn add @qintx/multi-page-webpack-plugin --dev
+yarn add @qintx/multi-page-webpack-plugin
 ```
 
 ### Usage
 
 ```
 // webpack.conf.js
-const MultiPageWebpackPlugin = require('@qintx/multi-page-webpack-plugin')
+const MultiPageWebpackPlugin = require('multi-page-webpack-plugin')
 
 {
     // ...
@@ -40,6 +40,7 @@ const MultiPageWebpackPlugin = require('@qintx/multi-page-webpack-plugin')
 | pageDir | 'src/pages' | the folder to search for page entries |
 | output | '[entryName]/index.html' | output path, support variable '[entryName]' |
 | template | 'index.html' | template file, support variable '[entryName]' |
+| hot | false | support HMR (dev mode) |
 | minify | false | minify the output file or not |
 | commonChunks | [] | other common chunks like 'common', 'vendor' |
 | debug | false | print debug infomation or not |
