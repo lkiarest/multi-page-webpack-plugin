@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const glob = require('glob')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const addDevServerEntrypoints = require('./addDevServerEntrypoints')
@@ -89,6 +90,23 @@ MultiPageWebpackPlugin.prototype.makeHtmlPlugins = function(entries, compiler) {
 
         plugins.push(new HtmlWebpackPlugin(pluginOptions))
     })
+
+    plugins.push(
+        new webpack.optimize.CommonsChunkPlugin({
+            names: entries, 
+            async: 'vendor-async',
+            children: true,
+            // minChunks: 3
+            minChunks (module) {
+                // any required modules inside node_modules are extracted to vendor
+                return (
+                    module.resource &&
+                    /[\.js|\.vue]$/.test(module.resource) &&
+                    module.resource.includes('node_modules')
+                )
+            }
+        }),
+    )
 
     return plugins
 }
